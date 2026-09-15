@@ -447,7 +447,7 @@ class _VisualisationScreenState extends State<VisualisationScreen> {
       body: SafeArea(
         child: _isLoading
             ? const Center(child: CircularProgressIndicator())
-            : _uniqueDatesCount < 7
+            : _filteredExpenses.isEmpty
                 ? _buildEmptyState()
                 : _buildAnalyticsView(),
       ),
@@ -479,7 +479,7 @@ class _VisualisationScreenState extends State<VisualisationScreen> {
                     ),
                     const SizedBox(height: 24),
                     Text(
-                      'Need data of at least 7 days',
+                      'No transactions yet',
                       style: theme.textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -487,7 +487,7 @@ class _VisualisationScreenState extends State<VisualisationScreen> {
                     ),
                     const SizedBox(height: 12),
                     Text(
-                      'Please record transactions on at least 7 distinct days to enable graphing and visualization.',
+                      'Start recording your transactions to see charts and analytics here.',
                       style: theme.textTheme.bodyMedium?.copyWith(
                         color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
                       ),
